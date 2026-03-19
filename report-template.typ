@@ -9,7 +9,7 @@
   student-id: "",
   name: "",
   project: "",
-  logo: "typst-img/1773924825701.png",
+  logo: "none",
   body
 ) = {
   // 自动获取当前时间
