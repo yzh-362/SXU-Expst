@@ -70,6 +70,8 @@ description: |
 - **双引号包裹纯文本/元素**：公式中的所有普通文本、物理单位符号、化学元素，**必须**使用双引号 `""` 包裹（例如 `$"mol"$`、`$"H"_2"O"$`、`$"A"$`），以防止被误解析为 Typst 的数学变量导致斜体或排版错误。
 - **数学环境包裹**：所有的公式和单位都必须使用 `$...$` 包裹。
 - **内容块 (Content Block)**：在代码模式下（例如调用函数传参时），若要传入包含纯文本、公式或排版指令的复合内容，必须使用方括号 `[...]` 将其包裹，以此从代码模式切换回排版模式（例如 `x-label: [浓度 ($"mol"\/"L"$)]`）。
+- **禁止直接输入未转义的斜杠**：任何直接输入的斜杠 `/` 都会被 Typst 解析为分数线，导致排版错误。务必使用 `\/` 进行转义。
+- **禁止输入{}用来书写公式**：Typst 的数学环境不使用 LaTeX 风格的花括号 `{}` 来分组或书写公式，请直接使用双引号 `""` 包裹文本和单位，并使用 `$...$` 包裹整个公式,使用括号`()`进行分组。示例：`$"n" = \frac{"m"}{"M"}$` 应写为 `$"n" = ("m")/("M")$`。对于指数和下标，也请使用括号包裹，例如 `$"H"_(2)"O"$`,`e^(-x/c)`。
 ```
 */
 
@@ -87,7 +89,7 @@ description: |
   student-id: "",
   name: "",
   project: "",
-  logo: "/typst-img/1773924825701.png",
+  logo:none,
   body
 ) = {
   // 自动获取当前时间
@@ -553,12 +555,12 @@ plot_energy("aimd_energetics.dat")
 
 == 实验数据可视化图表
 #figure(
-  image("/typst-img/1773923994505.png", width: 56%, fit: "contain"),
+  image("assets\\image.png", width: 56%, fit: "contain"),
   caption: [示例]
 )
 ```typst
 #figure(
-  image("/typst-img/1773923994505.png", width: 56%, fit: "contain"),
+  image("assets\\image.png", width: 56%, fit: "contain"),
   caption: [示例]
 )
 ```
